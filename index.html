@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grate — Политика конфиденциальности и удаление аккаунта</title>
+<style>
+  :root {
+    --bg: #07070e;
+    --surface: #121218;
+    --border: rgba(255,255,255,0.08);
+    --text: rgba(255,255,255,0.85);
+    --text-dim: rgba(255,255,255,0.5);
+    --tech: #3a8dff;
+    --idea: #00ff87;
+    --emotion: #ff4d6d;
+    --warn-bg: rgba(255,180,60,0.12);
+    --warn-border: rgba(255,180,60,0.4);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 48px 20px 96px; }
+
+  header { margin-bottom: 32px; }
+  .badge {
+    display: inline-flex;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 3px; }
+  .dot.tech { background: var(--tech); }
+  .dot.idea { background: var(--idea); }
+  .dot.emotion { background: var(--emotion); }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .subtitle { color: var(--text-dim); font-size: 14px; margin: 0; }
+
+  nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 28px 0 40px;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+  }
+  nav a:hover { background: rgba(255,255,255,0.09); }
+
+  .todo {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 40px;
+    font-size: 13px;
+  }
+  .todo strong { color: #ffcf8a; }
+  .todo code {
+    background: rgba(0,0,0,0.3);
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  .todo ul { margin: 8px 0 0; padding-left: 18px; }
+
+  section {
+    margin-bottom: 48px;
+    scroll-margin-top: 24px;
+  }
+  section h2 {
+    font-size: 19px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  h3 { font-size: 15px; color: var(--text); margin: 24px 0 8px; }
+  p, li { font-size: 14.5px; color: var(--text); }
+  ul { padding-left: 20px; }
+  .fill { color: #ffcf8a; background: rgba(255,180,60,0.1); padding: 0 4px; border-radius: 4px; }
+
+  .deletion-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .deletion-box h2 { border: none; padding-bottom: 0; margin-bottom: 8px; }
+  .step {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+  .step:first-of-type { border-top: none; padding-top: 20px; }
+  .step-num {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: rgba(255,77,109,0.15);
+    color: var(--emotion);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600;
+  }
+  .step-body h3 { margin: 0 0 4px; font-size: 14.5px; }
+  .step-body p { margin: 0; color: var(--text-dim); font-size: 13.5px; }
+
+  .retain-list { display: grid; gap: 10px; margin-top: 16px; }
+  .retain-row {
+    display: flex; justify-content: space-between; gap: 12px;
+    font-size: 13.5px; padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+  }
+  .retain-row .status { color: var(--text-dim); text-align: right; }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 12.5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="badge">
+      <span class="dot tech"></span><span class="dot idea"></span><span class="dot emotion"></span>
+    </div>
+    <h1>Grate</h1>
+    <p class="subtitle">Политика конфиденциальности · Условия использования · Удаление аккаунта</p>
+  </header>
+
+  <nav>
+    <a href="#privacy">Конфиденциальность</a>
+    <a href="#delete-account">Удаление аккаунта</a>
+    <a href="#terms">Условия использования</a>
+  </nav>
+
+  <div class="todo">
+    <strong>Перед публикацией страницы замени три плейсхолдера ниже —</strong>
+    они помечены жёлтым по всему тексту:
+    <ul>
+      <li><code class="fill">[ДАТА]</code> — дата вступления документа в силу</li>
+      <li><code class="fill">[EMAIL_ДЛЯ_СВЯЗИ]</code> — реальный email поддержки (на него будут приходить запросы на удаление данных)</li>
+      <li><code class="fill">[НАЗВАНИЕ_КОМПАНИИ_ИЛИ_ИМЯ]</code> — твоё имя как разработчика (как в Play Console)</li>
+    </ul>
+    Текст ниже — не юридическая консультация, перед публикацией стоит вычитать самому или показать юристу.
+  </div>
+
+  <section id="privacy">
+    <h2>Политика конфиденциальности Grate</h2>
+    <p><em>Действует с: <span class="fill">[ДАТА]</span></em></p>
+    <p>Grate ("мы", "приложение") уважает вашу конфиденциальность. Этот документ объясняет, какие данные мы собираем, зачем, и как ими распоряжаемся.</p>
+
+    <h3>1. Какие данные мы собираем</h3>
+    <p><strong>При регистрации:</strong></p>
+    <ul>
+      <li>E-mail (для входа и восстановления пароля)</li>
+      <li>Username и отображаемое имя, которые вы придумываете сами</li>
+      <li>Пароль хранится не у нас напрямую, а в зашифрованном виде у нашего провайдера аутентификации (Supabase Auth) — мы не видим ваш пароль в открытом виде</li>
+    </ul>
+    <p><strong>При использовании приложения:</strong></p>
+    <ul>
+      <li>Оценки произведений (три числовых параметра: техника/идея/эмоция) и тексты рецензий, которые вы пишете сами</li>
+      <li>Названия и описания списков, которые вы создаёте</li>
+      <li>Подписки на других пользователей и подписчики</li>
+      <li>Лайки на оценки и списки</li>
+      <li>Аватар, если вы его загружаете</li>
+      <li>Краткая биография профиля, если вы её заполняете</li>
+    </ul>
+    <p><strong>Мы НЕ собираем:</strong></p>
+    <ul>
+      <li>Точную геолокацию</li>
+      <li>Доступ к камере/микрофону/контактам</li>
+      <li>Данные банковских карт (в приложении нет платежей)</li>
+    </ul>
+
+    <h3>2. Зачем мы используем эти данные</h3>
+    <ul>
+      <li>Чтобы показывать вам ленту активности людей, на которых вы подписаны</li>
+      <li>Чтобы другие пользователи могли найти ваш публичный профиль (если вы не сделали его приватным в настройках)</li>
+      <li>Чтобы считать усреднённый рейтинг сообщества по конкретным произведениям (анонимно — по числам, без привязки к тому, кто именно поставил оценку)</li>
+      <li>Чтобы присылать вам уведомления о новых подписчиках, лайках и т.д.</li>
+    </ul>
+
+    <h3>3. С кем мы делимся данными</h3>
+    <p>Ваши данные хранятся на серверах Supabase (наш провайдер базы данных и аутентификации). Мы не продаём и не передаём ваши персональные данные третьим лицам в рекламных или иных коммерческих целях.</p>
+    <p>Если ваш профиль публичный (настройка по умолчанию, которую можно изменить), другие пользователи приложения видят: username, отображаемое имя, аватар, биографию, ваши оценки и рецензии, публичные списки, количество подписчиков/подписок.</p>
+
+    <h3>4. Хранение и удаление</h3>
+    <p>Вы можете в любой момент:</p>
+    <ul>
+      <li>Сделать профиль приватным (настройки → приватность)</li>
+      <li>Удалить отдельные оценки, рецензии, списки</li>
+      <li>Полностью удалить аккаунт вместе со всеми данными (настройки → "Удалить аккаунт") — это необратимо. Подробности — в разделе <a href="#delete-account" style="color:var(--emotion)">Удаление аккаунта</a> ниже.</li>
+    </ul>
+    <p>Локальная библиотека (то, что вы оценили) хранится на вашем устройстве независимо от аккаунта и работает даже без интернета — это не покидает ваш телефон, пока вы явно не публикуете список или пока данные не синхронизируются в рамках социальных функций.</p>
+
+    <h3>5. Безопасность</h3>
+    <p>Мы используем стандартные меры защиты (шифрование при передаче данных, политики доступа на уровне базы данных), но ни один сервис не может гарантировать абсолютную защиту от взлома.</p>
+
+    <h3>6. Возрастные ограничения</h3>
+    <p>Приложение не предназначено для детей младше 13 лет. Мы сознательно не собираем данные о детях.</p>
+
+    <h3>7. Изменения этой политики</h3>
+    <p>Мы можем обновлять этот документ. Существенные изменения будут отражены здесь с указанием новой даты вступления в силу.</p>
+
+    <h3>8. Связь с нами</h3>
+    <p>По вопросам, связанным с данными и конфиденциальностью, пишите: <span class="fill">[EMAIL_ДЛЯ_СВЯЗИ]</span></p>
+    <p>Разработчик: <span class="fill">[НАЗВАНИЕ_КОМПАНИИ_ИЛИ_ИМЯ]</span></p>
+  </section>
+
+  <section id="delete-account">
+    <div class="deletion-box">
+      <h2>Удаление аккаунта</h2>
+      <p style="color:var(--text-dim); margin-top:0;">Работает и без установленного приложения — эта страница и есть внешний путь удаления, который требует Google Play.</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Отправьте запрос на удаление</h3>
+          <p>Напишите с email, привязанного к вашему аккаунту Grate, на <span class="fill">[EMAIL_ДЛЯ_СВЯЗИ]</span> с темой "Удаление аккаунта". Если вы всё ещё пользуетесь приложением, то же самое можно сделать быстрее прямо в нём: Настройки → Удалить аккаунт.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Подтверждение личности</h3>
+          <p>Мы можем попросить подтвердить, что запрос отправляет владелец аккаунта (например, ответным письмом с того же адреса).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Удаление в течение [СРОК] дней</h3>
+          <p class="fill" style="display:inline;">Укажи реальный срок обработки (например, 7 или 30 дней) — сейчас это плейсхолдер.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px;">Что удаляется, а что остаётся</h3>
+      <div class="retain-list">
+        <div class="retain-row"><span>Профиль, подписки и подписчики</span><span class="status">Удаляется безвозвратно</span></div>
+        <div class="retain-row"><span>Публичные списки</span><span class="status">Удаляется безвозвратно</span></div>
+        <div class="retain-row"><span>Оценки и рецензии в общей ленте</span><span class="status">Удаляется безвозвратно</span></div>
+        <div class="retain-row"><span>Сам аккаунт (email/пароль)</span><span class="status">Удаляется безвозвратно</span></div>
+        <div class="retain-row"><span>Личная библиотека оценок на устройстве</span><span class="status">Остаётся на телефоне — приложение продолжает работать офлайн без аккаунта</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="terms">
+    <h2>Условия использования Grate</h2>
+    <p><em>Действует с: <span class="fill">[ДАТА]</span></em></p>
+
+    <h3>1. О приложении</h3>
+    <p>Grate — приложение для оценки фильмов, сериалов, игр, книг и музыки по трём параметрам (техника/идея/эмоция), с возможностью вести личную библиотеку офлайн и делиться списками/оценками с другими пользователями.</p>
+
+    <h3>2. Регистрация</h3>
+    <p>Для использования социальных функций (подписки, лента, публичные списки) нужен аккаунт с e-mail и паролем. Библиотека оценок без аккаунта работает полностью офлайн.</p>
+    <p>Вы обязуетесь:</p>
+    <ul>
+      <li>Указывать достоверный e-mail</li>
+      <li>Не выдавать себя за другого человека</li>
+      <li>Не использовать username, нарушающие права третьих лиц</li>
+    </ul>
+
+    <h3>3. Правила поведения</h3>
+    <p>Запрещается:</p>
+    <ul>
+      <li>Публиковать спам, оскорбительный или незаконный контент</li>
+      <li>Преследовать, оскорблять или угрожать другим пользователям</li>
+      <li>Выдавать себя за другого человека или организацию</li>
+      <li>Пытаться получить несанкционированный доступ к чужим аккаунтам или к инфраструктуре приложения</li>
+    </ul>
+    <p>Нарушение может привести к блокировке аккаунта. Вы можете пожаловаться на пользователя или заблокировать его — это доступно на странице любого профиля.</p>
+
+    <h3>4. Контент, который вы создаёте</h3>
+    <p>Рецензии, списки и прочий текст, который вы публикуете, остаются вашими, но вы разрешаете нам показывать их другим пользователям в рамках обычной работы приложения (лента, чужие профили, поиск), если ваш профиль публичный.</p>
+
+    <h3>5. Отсутствие гарантий</h3>
+    <p>Приложение предоставляется "как есть". Мы стараемся поддерживать его стабильную работу, но не гарантируем отсутствие ошибок или бесперебойную доступность.</p>
+
+    <h3>6. Изменение и прекращение</h3>
+    <p>Мы можем менять или прекращать отдельные функции приложения. Вы можете удалить свой аккаунт в любой момент через настройки.</p>
+
+    <h3>7. Связь с нами</h3>
+    <p>По вопросам, связанным с этими условиями, пишите: <span class="fill">[EMAIL_ДЛЯ_СВЯЗИ]</span></p>
+    <p>Разработчик: <span class="fill">[НАЗВАНИЕ_КОМПАНИИ_ИЛИ_ИМЯ]</span></p>
+  </section>
+
+  <footer>
+    Grate · эта страница используется как Privacy Policy URL и Account Deletion URL в Google Play Console (App content → Data safety).
+  </footer>
+
+</div>
+</body>
+</html>
